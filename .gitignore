@@ -1,0 +1,17 @@
+# Excluir la carpeta .vs (Visual Studio)
+.vs/
+
+# Excluir archivos binarios y de compilación
+bin/
+obj/
+
+# Excluir archivos de configuración del entorno de desarrollo
+*.user
+*.suo
+
+# Excluir archivos temporales de macOS o Windows
+.DS_Store
+Thumbs.db
+
+# Excluir otros archivos innecesarios
+*.log
