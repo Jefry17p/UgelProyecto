@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppUgel.Pages.Login"
+             Title="Login"
+             BackgroundColor="White">
+
+    <VerticalStackLayout Padding="50">
+        <Image
+            Source="user.png"
+            HeightRequest="185"
+            Aspect="AspectFit"/>
+        <Label Text="Usuario"
+               Margin="0,5,5,5"
+               TextColor="Black"/>
+        <Entry Margin="0,5,5,5"
+                Placeholder="Ingrese Usuario"
+                TextColor="Black"/>
+        <Label  Margin="0,5,5,5"
+                Text="Contraseña"
+                TextColor="Black"/>
+        <Entry Margin="0,5,5,5"
+                Placeholder="Ingrese Contraseña"
+                TextColor="Black"
+                IsPassword="True"/>
+        <Button 
+            Margin="50"
+            Text="Ingresar"
+            TextColor="White"
+            BackgroundColor="#0a96f7"
+            Clicked="btnAcceso"/>
+    </VerticalStackLayout>
+</ContentPage>
