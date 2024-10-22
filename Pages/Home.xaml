@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppUgel.Pages.Home"
+             Shell.NavBarIsVisible="False"
+             Title="Home"
+             BackgroundColor="White">
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,150"
+        Spacing="25">
+            <Image
+            Source="ugeltalara.png"
+            HeightRequest="185"
+            Aspect="AspectFit"/>
+            <Button 
+                    BackgroundColor="#0a96f7"
+                    FontFamily="Lobster-Regular"
+                    Text="Iniciar Sesión"
+                    TextColor="White"
+                    Clicked="btnSesion"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
