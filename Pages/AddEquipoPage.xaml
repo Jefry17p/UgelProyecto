@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppUgel.Pages.AddEquipoPage"
+             Title="Registrar nuevo equipo"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="20">
+
+            <Label Text="Nombre del equipo:" FontAttributes="Bold" TextColor="Black"/>
+            <Entry x:Name="NombreEntry" Placeholder="Nombre del Equipo"/>
+
+            <Label Text="Tipo:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Entry x:Name="TipoEntry" Placeholder="Tipo de Equipo"/>
+
+            <Label Text="Número de serie:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Entry x:Name="SerieEntry" Placeholder="Numero de serie del equipo"/>
+
+            <Label Text="Marca:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Entry x:Name="MarcaEntry" Placeholder="Marca del equipo"/>
+
+            <Label Text="Modelo:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Entry x:Name="ModeloEntry" Placeholder="Modelo del equipo"/>
+
+            <Label Text="Área:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Entry x:Name="AreaEntry" Placeholder="Área del equipo"/>
+
+            <Label Text="Estado:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <Picker x:Name="EstadoPicker" Title="Seleccionar estado del equipo" TextColor="Gray">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Activo</x:String>
+                        <x:String>Inactivo</x:String>
+                        <x:String>Dañado</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Fecha de Adquisición" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <DatePicker x:Name="FechaAdquiPicker" TextColor="Gray"/>
+
+            <Label Text="Fecha de registro" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
+            <DatePicker x:Name="FechaRegisPicker" TextColor="Gray"/>
+
+            <Button Text="Registrar equipo" Command="{Binding RegisterCommand}" Margin="0,20,0,0"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

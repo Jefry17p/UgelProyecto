@@ -2,16 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppUgel.Pages.EquiposPages"
-             Title="Equipos Disponibles">
+             Title="Equipos"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Text="Equipos Disponibles" FontSize="Large" HorizontalOptions="Center" />
+            <Button Text="Agregar equipo" x:Name="RegistrarEquipo" Clicked="RegistrarEquipo_Clicked" Margin="0,0,20,0"/>
+            <SearchBar Placeholder="Buscar equipo por número de serie o área"
+                       TextChanged="SearchBar_TextChanged"
+                       Margin="0,0,10,0"/>
             <ListView x:Name="EquiposListView" 
                       HasUnevenRows="True"
-                      SeparatorVisibility="Default">
+                      SeparatorVisibility="Default"
+                      ItemTapped="EquiposListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding NombreEqui}" TextColor="Black" />
+                        <TextCell Text="{Binding NombreEqui}" Detail="{Binding SerieEqui}" DetailColor="Gray"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
