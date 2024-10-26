@@ -17,7 +17,7 @@ public partial class MenuPage : ContentPage
         {
             new menuCLS() { codMenu = 1, nomMenu = "Equipos", imgMenu = "iclist.png" },
             new menuCLS() { codMenu = 2, nomMenu = "Mantenimientos", imgMenu = "icsettings.png" },
-            new menuCLS() { codMenu = 3, nomMenu = "Pendientes", imgMenu = "icnoti.png" },
+            new menuCLS() { codMenu = 3, nomMenu = "Programados", imgMenu = "icnoti.png" },
             new menuCLS() { codMenu = 4, nomMenu = "Historial", imgMenu = "ichistory.png" }
         };
 
@@ -39,6 +39,9 @@ public partial class MenuPage : ContentPage
         {
             case 1:
                 nexPage = new EquiposPages();
+                break;
+            case 2:
+                nexPage = new MantenimientoPages();
                 break;
         }
 
