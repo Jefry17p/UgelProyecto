@@ -8,22 +8,22 @@
         <StackLayout Padding="20">
 
             <Label Text="Nombre del equipo:" FontAttributes="Bold" TextColor="Black"/>
-            <Entry x:Name="NombreEntry" Placeholder="Nombre del Equipo"/>
+            <Entry x:Name="NombreEntry" TextColor="Gray" Placeholder="Nombre del Equipo"/>
 
             <Label Text="Tipo:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
-            <Entry x:Name="TipoEntry" Placeholder="Tipo de Equipo"/>
+            <Entry x:Name="TipoEntry" TextColor="Gray"  Placeholder="Tipo de Equipo"/>
 
             <Label Text="Número de serie:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
-            <Entry x:Name="SerieEntry" Placeholder="Numero de serie del equipo"/>
+            <Entry x:Name="SerieEntry" TextColor="Gray"  Placeholder="Numero de serie del equipo"/>
 
             <Label Text="Marca:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
-            <Entry x:Name="MarcaEntry" Placeholder="Marca del equipo"/>
+            <Entry x:Name="MarcaEntry" TextColor="Gray"  Placeholder="Marca del equipo"/>
 
             <Label Text="Modelo:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
-            <Entry x:Name="ModeloEntry" Placeholder="Modelo del equipo"/>
+            <Entry x:Name="ModeloEntry" TextColor="Gray"  Placeholder="Modelo del equipo"/>
 
             <Label Text="Área:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
-            <Entry x:Name="AreaEntry" Placeholder="Área del equipo"/>
+            <Entry x:Name="AreaEntry" TextColor="Gray"  Placeholder="Área del equipo"/>
 
             <Label Text="Estado:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="Black"/>
             <Picker x:Name="EstadoPicker" Title="Seleccionar estado del equipo" TextColor="Gray">
