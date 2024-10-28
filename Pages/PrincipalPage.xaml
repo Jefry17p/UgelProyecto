@@ -12,7 +12,8 @@
         </pages:MenuPage>
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
-        <NavigationPage x:Name="Navigate">
+        <NavigationPage x:Name="Navigate"
+                        BarBackgroundColor="#0a96f7">
             <x:Arguments>
                 <pages:DetailPage>
 
