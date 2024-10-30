@@ -23,9 +23,9 @@ namespace AppUgel.Models
         
         public EquiposCLS Equipo { get; set; }
 
-        public string NombreEqui { get; set; }
-        public string SerieEqui { get; set; }
-        public string AreaEqui { get; set; }
+        //public string NombreEqui { get; set; }
+        //public string SerieEqui { get; set; }
+        //public string AreaEqui { get; set; }
 
         ////Datos de Usuario
         //public string nombreUser {  get; set; }
