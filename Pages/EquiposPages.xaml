@@ -9,7 +9,8 @@
             <Button Text="Agregar equipo" x:Name="RegistrarEquipo" Clicked="RegistrarEquipo_Clicked" Margin="0,0,20,0"/>
             <SearchBar Placeholder="Buscar equipo por número de serie o área"
                        TextChanged="SearchBar_TextChanged"
-                       Margin="0,0,10,0"/>
+                       Margin="0,0,10,0"
+                       TextColor="Gray"/>
             <ListView x:Name="EquiposListView" 
                       HasUnevenRows="True"
                       SeparatorVisibility="Default"
