@@ -50,6 +50,8 @@ public partial class MenuPage : ContentPage
             App.Navigate.PushAsync(nexPage);
         }
 
+        ((ListView)sender).SelectedItem = null;
+
         App.menu.IsPresented = false;
 
     }

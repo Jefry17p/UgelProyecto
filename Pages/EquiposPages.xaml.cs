@@ -92,6 +92,7 @@ namespace AppUgel.Pages
             {
                 // Navegar a la página de detalles con el equipo seleccionado
                 await Navigation.PushAsync(new DetailEquiposPage(equipoSeleccionado));
+                Navigation.RemovePage(this);
             }
 
             // Deseleccionar el ítem
@@ -117,6 +118,7 @@ namespace AppUgel.Pages
         private async void RegistrarEquipo_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEquipoPage());
+            Navigation.RemovePage(this);
         }
     }
 }

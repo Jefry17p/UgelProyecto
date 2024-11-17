@@ -61,7 +61,8 @@ public partial class AddEquipoPage : ContentPage
 		{
 			await DisplayAlert("Éxito", "Equipo registrado correctamente", "OK");
 			await Navigation.PushAsync(new EquiposPages());
-		}
+            Navigation.RemovePage(this);
+        }
 		else 
 		{
 			await DisplayAlert("Error","No se pudo registrar el equipo","OK");
