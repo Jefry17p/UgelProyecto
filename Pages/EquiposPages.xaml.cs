@@ -3,6 +3,7 @@ using AppUgel.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using System.Text.Json;
 
 namespace AppUgel.Pages
 {
@@ -10,35 +11,75 @@ namespace AppUgel.Pages
     {
         private ApiServiceEquipos _apiServiceEquipos;
         private List<EquiposCLS> _equiposOriginal;
+        private ActivityIndicator loadingIndicator;
 
         public EquiposPages()
         {
             InitializeComponent();
             _apiServiceEquipos = new ApiServiceEquipos();
-            loadEquiposAsync();
+
+            // Llamar al método de carga de forma asíncrona
+            Task.Run(() => LoadEquiposAsync());
         }
 
-        private async void loadEquiposAsync()
+        private async Task LoadEquiposAsync()
         {
             try
             {
+                // Mostrar indicador de actividad desde la UI
+                await MainThread.InvokeOnMainThreadAsync(() =>
+                {
+                    IsBusy = true;
+                });
+
                 var equipos = await _apiServiceEquipos.GetEquiposAsync();
 
-                if (equipos != null && equipos.Count > 0)
+                if (equipos != null && equipos.Any())
                 {
                     _equiposOriginal = equipos;
-                    // Asignar la lista de equipos al ListView
-                    EquiposListView.ItemsSource = _equiposOriginal;
+
+                    // Actualizar UI en el hilo principal
+                    await MainThread.InvokeOnMainThreadAsync(() =>
+                    {
+                        EquiposListView.ItemsSource = _equiposOriginal;
+                        DisplayAlert("Éxito", $"Se cargaron {equipos.Count} equipos", "OK");
+                    });
                 }
                 else
                 {
-                    Console.WriteLine("No se cargaron equipos.");
+                    await MainThread.InvokeOnMainThreadAsync(() =>
+                    {
+                        _equiposOriginal = new List<EquiposCLS>();
+                        EquiposListView.ItemsSource = _equiposOriginal;
+                        DisplayAlert("Información", "No se encontraron equipos", "OK");
+                    });
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al cargar equipos: {ex.Message}");
+                await MainThread.InvokeOnMainThreadAsync(() =>
+                {
+                    DisplayAlert("Error", $"Error al cargar equipos: {ex.Message}", "OK");
+                });
             }
+            finally
+            {
+                await MainThread.InvokeOnMainThreadAsync(() =>
+                {
+                    IsBusy = false;
+                });
+            }
+        }
+
+        // Agregar un botón de recarga
+        private void AddRefreshButton()
+        {
+            var refreshButton = new Button
+            {
+                Text = "Recargar",
+                Command = new Command(async () => await LoadEquiposAsync())
+            };
+            ((StackLayout)Content).Children.Insert(1, refreshButton);
         }
 
         // Agregar "async" a este método
@@ -51,6 +92,7 @@ namespace AppUgel.Pages
             {
                 // Navegar a la página de detalles con el equipo seleccionado
                 await Navigation.PushAsync(new DetailEquiposPage(equipoSeleccionado));
+                Navigation.RemovePage(this);
             }
 
             // Deseleccionar el ítem
@@ -59,24 +101,24 @@ namespace AppUgel.Pages
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText=e.NewTextValue;
+            string searchText = e.NewTextValue;
             if (string.IsNullOrWhiteSpace(searchText))
             {
                 EquiposListView.ItemsSource = _equiposOriginal;
             }
             else
             {
-                var filteredEquipos = _equiposOriginal.Where(equipo => equipo.SerieEqui != null && equipo.SerieEqui.Contains
-                (searchText, StringComparison.OrdinalIgnoreCase) || equipo.AreaEqui != null && equipo.AreaEqui.Contains
-                (searchText, StringComparison.OrdinalIgnoreCase)).ToList();
-
-                EquiposListView.ItemsSource= filteredEquipos;
+                var filteredEquipos = _equiposOriginal?.Where(equipo =>
+                    equipo.SerieEqui?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
+                    equipo.AreaEqui?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true).ToList();
+                EquiposListView.ItemsSource = filteredEquipos;
             }
         }
 
         private async void RegistrarEquipo_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEquipoPage());
+            Navigation.RemovePage(this);
         }
     }
 }

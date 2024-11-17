@@ -34,7 +34,8 @@ public partial class DetailEquiposPage : ContentPage
         if (success)
         {
             await DisplayAlert("Actualizado", "El equipo fue actualizado correctamente", "OK");
-            await Navigation.PopAsync(); // Regresar a la página anterior
+            await Navigation.PushAsync(new EquiposPages()); // Regresar a la página anterior
+            Navigation.RemovePage(this);
         }
         else
         {
@@ -52,6 +53,7 @@ public partial class DetailEquiposPage : ContentPage
             {
                 await DisplayAlert("Eliminado", "El equipo fue eliminado correctamente", "OK");
                 await Navigation.PushAsync(new EquiposPages()); // Regresar a la página anterior
+                Navigation.RemovePage(this);
             }
             else
             {

@@ -4,23 +4,36 @@
              x:Class="AppUgel.Pages.EquiposPages"
              Title="Equipos"
              BackgroundColor="White">
-    <ContentPage.Content>
+    <Grid>
+        <!-- Indicador de actividad -->
+        <ActivityIndicator IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=IsBusy}"
+                          IsRunning="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"/>
+
         <StackLayout Padding="10">
-            <Button Text="Agregar equipo" x:Name="RegistrarEquipo" Clicked="RegistrarEquipo_Clicked" Margin="0,0,20,0"/>
+            <Button Text="Agregar equipo" 
+                    x:Name="RegistrarEquipo" 
+                    Clicked="RegistrarEquipo_Clicked" 
+                    Margin="0,0,20,0"/>
+
             <SearchBar Placeholder="Buscar equipo por número de serie o área"
                        TextChanged="SearchBar_TextChanged"
                        Margin="0,0,10,0"
                        TextColor="Gray"/>
+
             <ListView x:Name="EquiposListView" 
                       HasUnevenRows="True"
                       SeparatorVisibility="Default"
                       ItemTapped="EquiposListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding NombreEqui}" Detail="{Binding SerieEqui}" DetailColor="Gray"/>
+                        <TextCell Text="{Binding NombreEqui}" 
+                                Detail="{Binding SerieEqui}" 
+                                DetailColor="Gray"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </ContentPage.Content>
+    </Grid>
 </ContentPage>
