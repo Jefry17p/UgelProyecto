@@ -10,7 +10,9 @@ namespace AppUgel
         public App()
         {
             InitializeComponent();
-
+            
+            App.Current.UserAppTheme = AppTheme.Light;
+            
             Navigate = new NavigationPage(new Home());
             App.Current.MainPage = Navigate;
             menu = new PrincipalPage();
